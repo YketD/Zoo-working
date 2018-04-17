@@ -1,0 +1,23 @@
+apply plugin: "java"
+apply plugin: "checkstyle"
+
+sourceSets { 
+	main.java.srcDirs = ['src/main']
+	test.java.srcDirs = ['src/test']
+}
+jar { 
+	manifest {
+		attributes 'Main-Class': 'GUI'
+	}
+}
+repositories {
+ mavenCentral()
+}
+dependencies { 
+	compile group: 'junit', name: 'junit', version: '4.12'
+}
+
+checkstyle {
+ 	toolVersion = "7.4"
+	
+}
