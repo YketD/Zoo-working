@@ -18,6 +18,5 @@ dependencies {
 }
 
 checkstyle {
- 	toolVersion = "7.4"
-	
+	configFile = 'config/checkstyle/checkstyle.xml' as File
 }
