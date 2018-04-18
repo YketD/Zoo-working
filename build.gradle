@@ -1,6 +1,6 @@
 apply plugin: "java"
 apply plugin: "findbugs"
-//apply plugin: "checkstyle"
+apply plugin: "checkstyle"
 
 sourceSets { 
 	main.java.srcDirs = ['src/main']
@@ -19,12 +19,13 @@ dependencies {
 }
 
 findbugs {
-	ignoreFailures = false
+	ignoreFailures = true
 	toolVersion = "3.0.1"
 	sourceSets=[sourceSets.main]
 	excludeFilter = file("config/findbugs/exclude.xml")
 	reportsDir = file("$project.buildDir/reports/findbugs")
-	effort = "max"
+	reportLevel = "low"
+	
 }
 
 
@@ -36,6 +37,8 @@ findbugsMain{
 	}
 }
 
-//checkstyle {
-//	configFile = 'config/checkstyle/checkstyle.xml' as File
-//}
+checkstyle {
+	toolVersion = '6.16.1'
+	 config = rootProject.resources.text.fromFile('config/checkstyle/checkstyle.xml')
+
+}
